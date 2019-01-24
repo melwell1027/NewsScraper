@@ -66,8 +66,24 @@ module.exports = function (app) {
             .catch(function (err) {
                 /// Log error if it occurred ///
                 res.json(err);
+            });
+    });
+
+    /// Route for saving/updating an Article's associated Note ///
+    app.post("/articles/:id", function (req, res) {
+        /// Create the new note and pass the req.body to the entry ///
+        db.Note.create(req.body)
+            .then(function (dbNote) {
+                /// If note was successfully created, find one Article by req.params.id. Update the article to be associated with the new Note. { new: true } tells the query that we want it to return the updated User ///
+                return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
             })
-    })
+            .then(function (dbArticle) {
+                /// If we successfully updated an Article, send it back to the client ///
+                res.json(dbArticle);
+            })
+            .catch(function (err) {
+                /// Log an error if it occurred ///
+                res.json(err);
+            });
+    });
 }
-
-
