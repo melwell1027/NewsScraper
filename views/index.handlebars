@@ -1,0 +1,71 @@
+<div class="jumbotron">
+    <h1 class="display-4">Chicago News</h1>
+    <p class="lead">A Collection of Current Headlines from the Chicago Tribune</p>
+    <hr class="my-4">
+    <button class="btn btn-primary btn-lg" id="scrapeButton">Update Headlines</button>
+</div>
+
+<div class="container">
+
+    {{#each articles}}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card" style="width: 100%">
+                <div class="card-body">
+                    <h5 class="card-title">{{title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted"><a href="https://www.chicagotribune.com{{link}}" target="_blank">
+                            Go
+                            to Article </a></h6>
+                    <hr>
+                    <button type="button" class="btn btn-primary commentsButton">Comments</button>
+                    <button type="submit" class="btn btn-primary addCommentButton" data-id="{{_id}}">Add Comment</button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+
+    <!-- Comments Modal -->
+    <div class="modal" id="commentsModal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Comments</h2>
+            <br>
+            <div class="commentsDiv"></div>
+        </div>
+
+    </div>
+
+    <!-- Add Comment Modal -->
+    <div class="modal" id="addCommentModal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form>
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <textarea class="form-control commentTitle" rows="1"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <textarea class="form-control commentBody" rows="3"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary submitButton">Submit</button>
+            </form>
+        </div>
+
+    </div>
+
+    {{/each}}
+
+
+
+
+</div>

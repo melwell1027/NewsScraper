@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const db = require("../models");
 mongoose.connect("mongodb://localhost/newsdb", { useNewUrlParser: true });
 
+// var sue = { name: "sue", age: 16 };
+
 module.exports = function (app) {
     // GET route for scraping website
     app.get("/scrape", function (req, res) {
@@ -38,14 +40,16 @@ module.exports = function (app) {
         });
     });
 
-
     /// Route for getting the Articles from the db ///
-    app.get("/articles", function (req, res) {
+    app.get("/", function (req, res) {
         /// Grab every document in the Articles collection ///
         db.Article.find({})
             .then(function (dbArticle) {
-                /// If get route successfully found Articles, send then back to client ///
-                res.json(dbArticle)
+                /// If get route successfully found Articles, send them back to client ///
+                const articleData = {
+                    articles: dbArticle
+                }
+                res.render("index", articleData);
             })
             .catch(function (err) {
                 /// Log error if it occurred ///
@@ -86,4 +90,21 @@ module.exports = function (app) {
                 res.json(err);
             });
     });
-}
+
+    /// Route for getting all the notes with the associated article ///
+    app.get("/comments/", function (req, res) {
+        db.Note.find({})
+            .then(function (dbComments) {
+                /// If the route successfully found comments, send them back to the client ///
+                const commentData = {
+                    comments: dbComments
+                }
+                res.json(commentData);
+                console.log(commentData);
+            })
+            .catch(function (err) {
+                /// Log error if it occurred ///
+                res.json(err)
+            });
+    })
+};
