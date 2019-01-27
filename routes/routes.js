@@ -94,9 +94,9 @@ module.exports = function (app) {
     /// Route for getting all the notes with the associated article ///
     app.get("/comments/:id", function (req, res) {
 
-        const test = req.params.id
-        console.log(test);
-        db.Note.find({ article: test })
+        const id = req.params.id
+        console.log(id);
+        db.Note.find({ article: id })
             .then(function (dbComments) {
                 /// If the route successfully found comments, send them back to the client ///
                 const commentData = {
