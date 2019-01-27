@@ -29,7 +29,8 @@ $(".addCommentButton").click(function () {
             url: "/articles/" + id,
             data: {
                 title: $(".commentTitle").val(),
-                body: $(".commentBody").val()
+                body: $(".commentBody").val(),
+                article: id
             }
         }).then(function (data) {
             addCommentModal.style.display = "none";
@@ -40,18 +41,18 @@ $(".addCommentButton").click(function () {
     });
 });
 
-$.getJSON("/comments/", function (data) {
-    const commentsArr = data.comments
-    for (let i = 0; i < commentsArr.length; i++) {
-        $(".commentsDiv").append("<h5>" + commentsArr[i].title + "<h5>");
-        $(".commentsDiv").append("<p>" + commentsArr[i].body + "</p>")
-    }
-})
-
 $(".commentsButton").click(function () {
-
+    const id = $(this).data("id2");
+    console.log(this);
+    $(".commentsDiv").empty();
+    $.getJSON("/comments/" + id, function (data) {
+        const commentsArr = data.comments
+        for (let i = 0; i < commentsArr.length; i++) {
+            $(".commentsDiv").append("<h5>" + commentsArr[i].title + "<h5>");
+            $(".commentsDiv").append("<p>" + commentsArr[i].body + "</p>")
+        }
+    })
     commentsModal.style.display = "block";
-
     $(".close").click(function () {
         commentsModal.style.display = "none";
     });

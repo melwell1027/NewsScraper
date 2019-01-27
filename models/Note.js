@@ -7,10 +7,7 @@ const Schema = mongoose.Schema;
 const NoteSchema = new Schema({
     title: String,
     body: String,
-    article: {
-        type: Schema.Types.ObjectId,
-        href: "Article"
-    }
+    article: String
 });
 
 /// Create our model from the above schema, using Mongoose model method, then export it ///

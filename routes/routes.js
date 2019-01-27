@@ -92,15 +92,17 @@ module.exports = function (app) {
     });
 
     /// Route for getting all the notes with the associated article ///
-    app.get("/comments/", function (req, res) {
-        db.Note.find({})
+    app.get("/comments/:id", function (req, res) {
+
+        const test = req.params.id
+        console.log(test);
+        db.Note.find({ article: test })
             .then(function (dbComments) {
                 /// If the route successfully found comments, send them back to the client ///
                 const commentData = {
                     comments: dbComments
                 }
                 res.json(commentData);
-                console.log(commentData);
             })
             .catch(function (err) {
                 /// Log error if it occurred ///
