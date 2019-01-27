@@ -4,7 +4,9 @@ const cheerio = require('cheerio');
 
 const mongoose = require('mongoose');
 const db = require("../models");
-mongoose.connect("mongodb://localhost/newsdb", { useNewUrlParser: true });
+
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGODB_URI || "mongodb://melwell1027:Matt12345@ds213755.mlab.com:13755/heroku_jjsqgf27", { useMongoClient: true });
 
 // var sue = { name: "sue", age: 16 };
 
