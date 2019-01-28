@@ -35,3 +35,25 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+.jumbotron {
+  background-image: url("./photos/photo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  color:#FDCA40;
+  font-family: 'Limelight', cursive;
+}
+
+.lead {
+  color: white;
+  font-family: 'Limelight', cursive;
+}
+
+#scrapeButton {
+  color: black;
+  background-color: #FDCA40;
+  border-color: #FDCA40;
+}

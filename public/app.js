@@ -47,6 +47,7 @@ $(".commentsButton").click(function () {
     $(".commentsDiv").empty();
     $.getJSON("/comments/" + id, function (data) {
         const commentsArr = data.comments
+        console.log(data);
         for (let i = 0; i < commentsArr.length; i++) {
             $(".commentsDiv").append("<h5>" + commentsArr[i].title + "<h5>");
             $(".commentsDiv").append("<p>" + commentsArr[i].body + "</p>")
