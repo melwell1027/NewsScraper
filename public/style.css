@@ -16,15 +16,15 @@
   .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 50%; /* Could be more or less, depending on screen size */
   }
   
   /* The Close Button */
   .close {
     color: #aaa;
-    float: right;
+    text-align: right;
     font-size: 28px;
     font-weight: bold;
   }
@@ -37,13 +37,18 @@
   }
 
 .jumbotron {
-  background-image: url("./photos/photo.jpg");
+  background-image: url("./photos/chicagoskyline.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  box-shadow:0 0 8px #605856;
+}
+
+body {
+  background-color: #fdfef8;
 }
 
 h1 {
-  color:#FDCA40;
+  color:#FFE548;
   font-family: 'Limelight', cursive;
 }
 
@@ -52,8 +57,31 @@ h1 {
   font-family: 'Limelight', cursive;
 }
 
-#scrapeButton {
+.btn {
   color: black;
-  background-color: #FDCA40;
-  border-color: #FDCA40;
+  background-color: #FFE548;
+  border-color: #FFE548;
 }
+
+.btn:hover{
+  background-color: #EE6C4D;
+  border-color: #EE6C4D;
+}
+
+.card-body {
+  box-shadow:0 0 8px #605856;
+}
+
+.commentsButton {
+ float: right;
+}
+
+.addCommentButton {
+ float: right;
+ margin-right: 4px;
+}
+
+a {
+  color: #EE6C4D;
+}
+
